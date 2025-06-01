@@ -1,0 +1,45 @@
+.detail-container {
+    background-color: #8b0000; /* Koyu kırmızı arka plan */
+    color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 600px;
+    margin: 30px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .detail-container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .detail-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .detail-container li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+  
+  .back-button {
+    margin-top: 20px;
+    background-color: #17c800; /* Yeşil */
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+  }
+  
+  .back-button:hover {
+    transform: scale(1.05);
+    background-color: #00e170;
+  }
+  

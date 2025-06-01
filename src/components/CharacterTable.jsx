@@ -1,37 +1,46 @@
-// src/components/CharacterTable.jsx
 import React from 'react';
+import './CharacterTable.css';
+import { useNavigate } from 'react-router-dom';
 
-function CharacterTable({ characters, onRowClick }) {
-  if (!characters || characters.length === 0) {
-    return <p>Görüntülenecek karakter bulunamadı.</p>;
-  }
+const CharacterTable = ({ characters }) => {
+  const navigate = useNavigate();
+
+  const handleRowClick = (character) => {
+    navigate(`/character/${character.id}`, { state: { character } });
+  };
 
   return (
-    <table border="1" cellPadding="10" style={{ borderCollapse: 'collapse', width: '100%' }}>
-      <thead>
-        <tr>
-          <th>Resim</th>
-          <th>İsim</th>
-          <th>Durum</th>
-          <th>Tür</th>
-          <th>Cinsiyet</th>
-        </tr>
-      </thead>
-      <tbody>
-        {characters.map((char) => (
-          <tr key={char.id} onClick={() => onRowClick(char)} style={{ cursor: 'pointer' }}>
-            <td>
-              <img src={char.image} alt={char.name} width={50} />
-            </td>
-            <td>{char.name}</td>
-            <td>{char.status}</td>
-            <td>{char.species}</td>
-            <td>{char.gender}</td>
+    <div className="table-container">
+      <table className="character-table">
+        <thead>
+          <tr>
+            <th>Görsel</th>
+            <th>İsim</th>
+            <th>Durum</th>
+            <th>Cinsiyet</th>
+            <th>Tür</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {characters.map((char) => (
+            <tr key={char.id} onClick={() => handleRowClick(char)}>
+              <td>
+                <img
+                  className="character-image"
+                  src={char.image}
+                  alt={char.name}
+                />
+              </td>
+              <td>{char.name}</td>
+              <td>{char.status}</td>
+              <td>{char.gender}</td>
+              <td>{char.species}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
-}
+};
 
 export default CharacterTable;
