@@ -1,31 +1,37 @@
+/* === Genel Uygulama Arka Planı === */
 .app-container {
-  background-color: #1a0000; /* Koyu bordo */
+  background-color: #1a0000; /* Koyu bordo arka plan */
   min-height: 100vh;
   padding: 20px;
   color: white;
 }
 
+/* === Başlık Animasyonu: Glow Efekti === */
 @keyframes wowGlow {
   0% {
     color: #ff0000;
     text-shadow: 0 0 5px #ff0000, 0 0 10px #ff3333, 0 0 15px #ff6666;
     transform: scale(1);
   }
+
   25% {
     color: #ff6600;
     text-shadow: 0 0 10px #ff6600, 0 0 20px #ff9966, 0 0 30px #ff6600;
     transform: scale(1.05);
   }
+
   50% {
     color: #00ff00;
     text-shadow: 0 0 15px #00ff00, 0 0 30px #66ff66, 0 0 45px #00ff00;
     transform: scale(1.1);
   }
+
   75% {
     color: #ffcc00;
     text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffff66, 0 0 30px #ffcc00;
     transform: scale(1.05);
   }
+
   100% {
     color: #ff0000;
     text-shadow: 0 0 5px #ff0000, 0 0 10px #ff3333, 0 0 15px #ff6666;
@@ -33,6 +39,7 @@
   }
 }
 
+/* === Başlık Stili === */
 .title {
   font-size: 3.2rem;
   font-weight: 900;

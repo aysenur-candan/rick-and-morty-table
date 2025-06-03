@@ -13,7 +13,9 @@ function CharacterTable() {
   const [genderFilter, setGenderFilter] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(20); // SADECE BU OLMALI
+  const [itemsPerPage, setItemsPerPage] = useState(20);
+
+  const MAX_CHARACTERS = 300;
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -21,7 +23,7 @@ function CharacterTable() {
         let allCharacters = [];
         let nextUrl = 'https://rickandmortyapi.com/api/character';
 
-        while (nextUrl && allCharacters.length < 300) {
+        while (nextUrl && allCharacters.length < MAX_CHARACTERS) {
           const { data } = await axios.get(nextUrl);
           allCharacters = [...allCharacters, ...data.results];
           nextUrl = data.info.next;
@@ -65,7 +67,7 @@ function CharacterTable() {
     <div className="table-container">
       <h1 className="animated-title">Rick and Morty Karakterleri</h1>
 
-      {/* Filtreler */}
+      {/* Filters */}
       <div className="filters-container">
         <input
           type="text"
@@ -93,8 +95,6 @@ function CharacterTable() {
           <option value="Genderless">Genderless</option>
           <option value="unknown">Unknown</option>
         </select>
-
-        {/* Sayfa Boyutu Seçici */}
         <select value={itemsPerPage} onChange={(e) => setItemsPerPage(Number(e.target.value))}>
           <option value={10}>10 sonuç</option>
           <option value={20}>20 sonuç</option>
@@ -103,7 +103,7 @@ function CharacterTable() {
         </select>
       </div>
 
-      {/* Tablo */}
+      {/* Table */}
       <table className="character-table">
         <thead>
           <tr>
@@ -137,7 +137,7 @@ function CharacterTable() {
         </tbody>
       </table>
 
-      {/* Sayfalama */}
+      {/* Pagination */}
       <div className="pagination">
         {Array.from({ length: totalPages }, (_, i) => (
           <button
@@ -150,7 +150,7 @@ function CharacterTable() {
         ))}
       </div>
 
-      {/* Detay */}
+      {/* Character Details */}
       {selectedCharacter && (
         <div id="character-detail" className="character-detail-wrapper">
           <div className="character-detail-card">
