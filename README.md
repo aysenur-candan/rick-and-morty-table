@@ -47,7 +47,7 @@ Bu proje, [Rick and Morty API](https://rickandmortyapi.com/) kullanılarak oluş
 
 - 🔍 İsme, duruma ve cinsiyete göre filtreleme
 - 🔢 Sayfalama
-- 📋 Detay görünümü: Her karaktere tıklanarak detay bilgileri gösterilir
+- 📋 Detay görünümü: Her karaktere tıklanarak detay bilgileri gösterilir ayrıca mouse imleci ile karakter resminin üstüne gelindiğinde resim ekranda büyür.
 - ✅ Temiz ve okunaklı React kod yapısı
 
 ## 🛠️ Kullanılan Teknolojiler
@@ -59,12 +59,12 @@ Bu proje, [Rick and Morty API](https://rickandmortyapi.com/) kullanılarak oluş
 
 ## 🙋‍♀️ Hakkımda
 
-Ben **Ayşenur Candan**. Kayseri Üniversitesi Bilgisayar Mühendisliği 2. sınıfı tamamladım.  
-Bu proje, **zorunlu yaz stajım** kapsamında özenle ve isteyerek geliştirilmiştir.
+Merhabalar, ben **Ayşenur Candan**. Kayseri Üniversitesi Bilgisayar Mühendisliği 2. sınıfı tamamladım.  
+Bu proje, **zorunlu yaz stajım** kapsamında özenle geliştirilmiştir.
 
 Yeni teknolojilere meraklı, öğrenmeye açık ve sorumluluk almaktan çekinmeyen biriyim.  
 Bu projeyi tamamlarken çok şey öğrendim ve gelişmeye devam ediyorum.  
-🎯 Geri bildirimleriniz benim için çok kıymetli!
+Geri bildirimleriniz benim için çok kıymetli.
 
 ## 📩 İletişim
 

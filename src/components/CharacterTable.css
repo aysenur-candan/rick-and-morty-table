@@ -1,4 +1,9 @@
-/* Genel Ayarlar */
+/* ============================= */
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+/* ============================= */
+/* GENEL AYARLAR */
 body {
   margin: 0;
   background-color: #1a0000;
@@ -6,18 +11,8 @@ body {
   color: white;
 }
 
-/* Başlık Animasyonu */
-@keyframes glow {
-  0%, 100% {
-    text-shadow: 0 0 5px red, 0 0 10px crimson;
-    transform: scale(1);
-  }
-  50% {
-    text-shadow: 0 0 15px red, 0 0 25px crimson;
-    transform: scale(1.05);
-  }
-}
-
+/* ============================= */
+/* BAŞLIK */
 .animated-title {
   font-size: 2.5rem;
   color: red;
@@ -26,14 +21,14 @@ body {
   animation: glow 1.5s ease-in-out infinite alternate;
 }
 
-/* Tablo Konteyneri */
+/* ============================= */
+/* TABLO */
 .table-container {
   padding: 20px;
   background-color: #1a0000;
   min-height: 100vh;
 }
 
-/* Karakter Tablosu */
 .character-table {
   width: 100%;
   background-color: #8B0000;
@@ -59,7 +54,8 @@ body {
   box-shadow: 0 0 15px #ff0000;
 }
 
-/* Karakter Görseli */
+/* ============================= */
+/* KARAKTER GÖRSELİ */
 .character-image-container {
   width: 60px;
   height: 60px;
@@ -87,15 +83,14 @@ body {
   pointer-events: none;
 }
 
-/* Filtreleme Alanı */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
+/* ============================= */
+/* FİLTRELEME */
 .filters-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
   margin: 20px auto;
-  flex-wrap: wrap;
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -120,7 +115,8 @@ body {
   outline: none;
 }
 
-/* Sayfalama */
+/* ============================= */
+/* SAYFALAMA */
 .pagination {
   display: flex;
   justify-content: center;
@@ -144,14 +140,16 @@ body {
   font-weight: bold;
 }
 
-/* Sonuç Yok */
+/* ============================= */
+/* SONUÇ YOK MESAJI */
 .no-results {
   text-align: center;
   font-size: 18px;
   margin-top: 30px;
 }
 
-/* Detay Sayfası */
+/* ============================= */
+/* DETAY SAYFASI */
 .character-detail-wrapper {
   display: flex;
   justify-content: center;
@@ -183,7 +181,19 @@ body {
   transform: scale(1.05);
 }
 
-/* Animasyon */
+/* ============================= */
+/* ANİMASYONLAR */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px red, 0 0 10px crimson;
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 15px red, 0 0 25px crimson;
+    transform: scale(1.05);
+  }
+}
+
 @keyframes glowPulse {
   0%, 100% {
     box-shadow: 0 0 6px #ff4d4d;

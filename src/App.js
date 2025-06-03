@@ -1,6 +1,8 @@
 // src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import CharacterTable from './components/CharacterTable';
 import CharacterDetail from './components/CharacterDetail';
 
@@ -16,4 +18,3 @@ function App() {
 }
 
 export default App;
-
