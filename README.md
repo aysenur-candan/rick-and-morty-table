@@ -1,9 +1,12 @@
 # Rick and Morty Karakter Tablosu
-![Rick and Morty Tablosu](assets/image.png)
+## 🌐 Canlı Demo
+Projeyi GitHub Pages üzerinden inceleyebilirsiniz:  
+👉 [rick-and-morty-table](https://aysenur-candan.github.io/rick-and-morty-table/)
 
+![Filtreleme Örneği](assets/poc.png)
 Bu proje, [Rick and Morty API](https://rickandmortyapi.com/) kullanılarak React ile geliştirilmiş, filtreleme, sıralama ve sayfalama özelliklerine sahip bir karakter tablosudur.
 
-![Filtreleme Örneği](assets/image-1.png)
+
 ## 🎯 Proje Amacı
 
 Frontend geliştirme becerilerimi göstermek, API kullanımı, veri işleme ve kullanıcı dostu arayüz oluşturma konularında deneyim kazanmak amacıyla bu projeyi geliştirdim.
@@ -39,9 +42,6 @@ npm start
 
 Bu proje, [Rick and Morty API](https://rickandmortyapi.com/) kullanılarak oluşturulmuş filtrelenebilir, sıralanabilir ve sayfalama özelliklerine sahip bir karakter tablosudur.
 
-## 🌐 Canlı Demo
-Projeyi GitHub Pages üzerinden inceleyebilirsiniz:  
-👉 [rick-and-morty-table](https://aysenur-candan.github.io/rick-and-morty-table/)
 
 ## 🚀 Özellikler
 
