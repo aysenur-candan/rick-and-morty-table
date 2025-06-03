@@ -6,41 +6,47 @@ function CharacterTable() {
   const [characters, setCharacters] = useState([]);
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+
   const [nameFilter, setNameFilter] = useState('');
   const [speciesFilter, setSpeciesFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [genderFilter, setGenderFilter] = useState('');
+
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20;
+  const [itemsPerPage, setItemsPerPage] = useState(20); // SADECE BU OLMALI
 
   useEffect(() => {
-    const fetchAllCharacters = async () => {
+    const fetchCharacters = async () => {
       try {
         let allCharacters = [];
         let nextUrl = 'https://rickandmortyapi.com/api/character';
+
         while (nextUrl && allCharacters.length < 300) {
-          const response = await axios.get(nextUrl);
-          allCharacters = [...allCharacters, ...response.data.results];
-          nextUrl = response.data.info.next;
+          const { data } = await axios.get(nextUrl);
+          allCharacters = [...allCharacters, ...data.results];
+          nextUrl = data.info.next;
         }
+
         setCharacters(allCharacters);
         setFilteredCharacters(allCharacters);
       } catch (error) {
         console.error('Veri alınamadı:', error);
       }
     };
-    fetchAllCharacters();
+
+    fetchCharacters();
   }, []);
 
   useEffect(() => {
-    let filtered = characters.filter((char) =>
+    const filtered = characters.filter((char) =>
       char.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
-      (speciesFilter === '' || char.species === speciesFilter) &&
-      (statusFilter === '' || char.status === statusFilter) &&
-      (genderFilter === '' || char.gender === genderFilter)
+      (!speciesFilter || char.species === speciesFilter) &&
+      (!statusFilter || char.status === statusFilter) &&
+      (!genderFilter || char.gender === genderFilter)
     );
+
     setFilteredCharacters(filtered);
-    setCurrentPage(1); // filtreleme sonrası sayfa başa dönsün
+    setCurrentPage(1);
   }, [nameFilter, speciesFilter, statusFilter, genderFilter, characters]);
 
   const indexOfLast = currentPage * itemsPerPage;
@@ -48,11 +54,10 @@ function CharacterTable() {
   const currentCharacters = filteredCharacters.slice(indexOfFirst, indexOfLast);
   const totalPages = Math.ceil(filteredCharacters.length / itemsPerPage);
 
-  const handleCharacterClick = (char) => {
-    setSelectedCharacter(char);
+  const handleCharacterClick = (character) => {
+    setSelectedCharacter(character);
     setTimeout(() => {
-      const detail = document.getElementById('character-detail');
-      if (detail) detail.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('character-detail')?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -88,6 +93,14 @@ function CharacterTable() {
           <option value="Genderless">Genderless</option>
           <option value="unknown">Unknown</option>
         </select>
+
+        {/* Sayfa Boyutu Seçici */}
+        <select value={itemsPerPage} onChange={(e) => setItemsPerPage(Number(e.target.value))}>
+          <option value={10}>10 sonuç</option>
+          <option value={20}>20 sonuç</option>
+          <option value={50}>50 sonuç</option>
+          <option value={100}>100 sonuç</option>
+        </select>
       </div>
 
       {/* Tablo */}
@@ -104,7 +117,7 @@ function CharacterTable() {
         <tbody>
           {currentCharacters.length === 0 ? (
             <tr>
-              <td colSpan="5">Sonuç bulunamadı.</td>
+              <td colSpan="5" className="no-results">Sonuç bulunamadı.</td>
             </tr>
           ) : (
             currentCharacters.map((char) => (
@@ -126,26 +139,22 @@ function CharacterTable() {
 
       {/* Sayfalama */}
       <div className="pagination">
-        {Array.from({ length: totalPages }, (_, idx) => (
+        {Array.from({ length: totalPages }, (_, i) => (
           <button
-            key={idx + 1}
-            className={currentPage === idx + 1 ? 'active' : ''}
-            onClick={() => setCurrentPage(idx + 1)}
+            key={i + 1}
+            className={currentPage === i + 1 ? 'active' : ''}
+            onClick={() => setCurrentPage(i + 1)}
           >
-            {idx + 1}
+            {i + 1}
           </button>
         ))}
       </div>
 
       {/* Detay */}
       {selectedCharacter && (
-        <div id="character-detail" className="detail-container">
-          <div className="detail-card">
-            <img
-              src={selectedCharacter.image}
-              alt={selectedCharacter.name}
-              className="detail-image"
-            />
+        <div id="character-detail" className="character-detail-wrapper">
+          <div className="character-detail-card">
+            <img src={selectedCharacter.image} alt={selectedCharacter.name} />
             <h2>{selectedCharacter.name}</h2>
             <p><strong>Durum:</strong> {selectedCharacter.status}</p>
             <p><strong>Cinsiyet:</strong> {selectedCharacter.gender}</p>
